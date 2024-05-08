@@ -1,0 +1,74 @@
+<!-- All Students -->
+<section class="container mt-5">
+  <h3 class="text-center mb-5 p-3 bg-secondary text-white rounded w-50 mx-auto">Students Data</h3>
+
+  <table class="table table-hover table-bordered text-center w-75 mx-auto">
+    <thead>
+      <tr class="bg-dark text-white">
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of studentsAllData; let i = index" [attr.track]="item.id">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.age }}</td>
+        <td class="d-flex justify-content-evenly">
+          <button class="btn btn-outline-info" (click)="show(item)">Show</button>
+          <button class="btn btn-outline-warning" (click)="edit(item)">Edit</button>
+          <button class="btn btn-outline-danger" (click)="delete(item)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- Student Data -->
+<div class="container mt-5" *ngIf="isSelected">
+
+  <div class="card w-50 mx-auto">
+    <div class="card-body">
+      <h5 class="card-title">{{ selectedStudent.name }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">ID: {{ selectedStudent.id }}</h6>
+      <p class="card-text">Age: {{ selectedStudent.age }}</p>
+      <button class="btn btn-primary" (click)="closeStudent()">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Create A New Student Form -->
+<div class="container mt-5">
+  <h3 class="text-center mb-5 p-3 bg-success text-white rounded w-50 mx-auto">Create New Student</h3>
+  <form>
+    <div class="form-group">
+      <label for="newStudentName">Name</label>
+      <input type="text" class="form-control" id="newStudentName" placeholder="Enter name">
+    </div>
+    <div class="form-group">
+      <label for="newStudentAge">Age</label>
+      <input type="number" class="form-control" id="newStudentAge" placeholder="Enter age">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+<!-- Edit Student Form -->
+<div class="container mt-5" *ngIf="isEditing">
+  <h3 class="text-center mb-5 p-3 bg-warning text-white rounded w-50 mx-auto">Edit Student</h3>
+  <form>
+    <div class="form-group">
+      <label for="editStudentName">Name</label>
+      <input #t2 type="text" class="form-control" id="editStudentName" value="{{selectedStudent.name}}">
+    </div>
+    <div class="form-group">
+      <label for="editStudentAge">Age</label>
+      <input #t3 type="number" class="form-control" id="editStudentAge" placeholder="Enter age" [value]="selectedStudent.age">
+    </div>
+    <button (click)="update(t2.value,t3.value)" class="btn btn-warning">Update</button>
+    <button class="btn btn-secondary ml-2" (click)="cancelEdit()">Cancel</button>
+  </form>
+</div>

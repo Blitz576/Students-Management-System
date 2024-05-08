@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* BootStrap file */
+@import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
+
+/* Main Font Style */
+@import url('https://fonts.googleapis.com/css?family=EB Garamond');
+

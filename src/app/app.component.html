@@ -7,7 +7,7 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<style>
+<!-- <style>
   :host {
     --bright-blue: oklch(51.01% 0.274 263.83);
     --electric-violet: oklch(53.18% 0.28 296.97);
@@ -324,16 +324,23 @@
   </div>
 </main>
 
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-
-<router-outlet />
+<router-outlet /> -->
 
 <app-home></app-home>
-<app-student></app-student>
+<!-- Choose Page -->
+<section class="container-fluid mt-5">
+  <div class="d-flex justify-content-center">
+    <button (click)="renderComponent('student')" class="btn btn-outline-primary btn-lg ml-3">Students</button>
+    <button (click)="renderComponent('department')" class="btn btn-outline-success btn-lg ml-3">Departments</button>
+  </div>
+</section>
+
+
+@if(isStudentComponent){
+<app-students-list></app-students-list>
+}
+
+@else if(isDepartmentComponent){
+  <app-department></app-department>
+}

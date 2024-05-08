@@ -1,0 +1,62 @@
+<!-- All Departments -->
+<section class="container mt-5">
+  <h3 class="text-center mb-5 p-3 bg-secondary text-white rounded w-50 mx-auto">Departments Data</h3>
+
+  <table class="table table-hover table-bordered text-center w-75 mx-auto">
+    <thead>
+      <tr class="bg-dark text-white">
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of departmentsAllData;" [attr.track]="item.id">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td class="d-flex justify-content-evenly">
+          <button class="btn btn-outline-info" (click)="show(item)">Show</button>
+          <button class="btn btn-outline-warning" (click)="edit(item)">Edit</button>
+          <button class="btn btn-outline-danger" (click)="delete(item)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- Department Data -->
+<div class="container mt-5" *ngIf="isSelected">
+  <div class="card w-50 mx-auto">
+    <div class="card-body">
+      <h5 class="card-title">{{ selectedDepartment.name }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">ID: {{ selectedDepartment.id }}</h6>
+      <button class="btn btn-primary" (click)="closeDepartment()">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Create A New Department Form -->
+<div class="container mt-5">
+  <h3 class="text-center mb-5 p-3 bg-success text-white rounded w-50 mx-auto">Create New Department</h3>
+  <form>
+    <div class="form-group">
+      <label for="newDepartmentName">Name</label>
+      <input type="text" class="form-control" id="newDepartmentName" placeholder="Enter name" [(ngModel)]="newDepartment.name">
+    </div>
+    <button type="button" (click)="save()" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+<!-- Edit Department Form -->
+<div class="container mt-5" *ngIf="isEditing">
+  <h3 class="text-center mb-5 p-3 bg-warning text-white rounded w-50 mx-auto">Edit Department</h3>
+  <form>
+    <div class="form-group">
+      <label for="editDepartmentName">Name</label>
+      <input type="text" class="form-control" id="editDepartmentName" [(ngModel)]="editDepartment.name">
+    </div>
+    <button type="button" (click)="update(editDepartment.name)" class="btn btn-warning">Update</button>
+    <button type="button" class="btn btn-secondary ml-2" (click)="cancelEdit()">Cancel</button>
+  </form>
+</div>
