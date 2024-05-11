@@ -30,7 +30,16 @@ export class StudentsListComponent {
 
 
  //create new student
- save(){
+ save(name:string,ageString:string){
+  this.newStudent.Id = parseInt(ageString);
+  this.newStudent.name=name;
+
+
+  //get the last studnet id
+  let lastStudentId:number = this.studentsAllData[this.studentsAllData.length-1].id;
+  lastStudentId+=10;
+
+  this.newStudent.Id=lastStudentId;
   this.studentsAllData.push(new Student(this.newStudent.id,this.newStudent.age,this.newStudent.name));
  };
 

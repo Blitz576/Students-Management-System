@@ -1,0 +1,11 @@
+<!-- Create A New Department Form -->
+<div class="container mt-5">
+  <h3 class="text-center mb-5 p-3 bg-success text-white rounded w-50 mx-auto">Create New Department</h3>
+  <form>
+    <div class="form-group">
+      <label for="newDepartmentName">Name</label>
+      <input type="text" class="form-control" id="newDepartmentName" placeholder="Enter name" [(ngModel)]="newDepartment.name">
+    </div>
+    <button (click)="save()" class="btn btn-primary">Submit</button>
+  </form>
+</div>

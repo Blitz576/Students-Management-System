@@ -4,13 +4,17 @@ import { StudentComponent } from './student/student.component';
 import { HomeComponent } from './home/home.component';
 import { StudentsListComponent } from './students-list/students-list.component';
 import { DepartmentComponent } from './department/department.component';
+import { StudentTableComponent } from './StudentCrud/student-table/student-table.component';
+import { CreateStudentComponent } from "./StudentCrud/create-student/create-student.component";
+import { CreateDepartmentComponent } from "./DepartmentCrud/create-department/create-department.component";
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet , StudentComponent , HomeComponent,StudentsListComponent ,DepartmentComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    standalone: true,
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css',
+    imports: [RouterOutlet, StudentComponent, StudentTableComponent, HomeComponent, StudentsListComponent, DepartmentComponent,FormsModule]
 })
 export class AppComponent {
   title = 'student-management-system';

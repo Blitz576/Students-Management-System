@@ -23,7 +23,16 @@ export class DepartmentComponent {
     new Department(40, "Software Testing"),
   ];
 
-  save() {
+  save(name:string) {
+    this.newDepartment.name= name;
+
+    // Get The Last Student id
+   let lastDepartmentId:number =this.departmentsAllData[this.departmentsAllData.length-1].id;
+
+   // Update The New Id 
+    lastDepartmentId +=10;
+
+    this.newDepartment.id = lastDepartmentId;
     this.departmentsAllData.push(new Department(this.newDepartment.id, this.newDepartment.name));
   };
 

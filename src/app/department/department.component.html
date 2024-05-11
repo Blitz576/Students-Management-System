@@ -42,9 +42,9 @@
   <form>
     <div class="form-group">
       <label for="newDepartmentName">Name</label>
-      <input type="text" class="form-control" id="newDepartmentName" placeholder="Enter name" [(ngModel)]="newDepartment.name">
+      <input type="text" class="form-control" id="newDepartmentName" placeholder="Enter name" #name>
     </div>
-    <button type="button" (click)="save()" class="btn btn-primary">Submit</button>
+    <button type="button" (click)="save(name.value)" class="btn btn-primary">Submit</button>
   </form>
 </div>
 
@@ -54,9 +54,9 @@
   <form>
     <div class="form-group">
       <label for="editDepartmentName">Name</label>
-      <input type="text" class="form-control" id="editDepartmentName" [(ngModel)]="editDepartment.name">
+      <input type="text" class="form-control" id="editDepartmentName" #newDept [value]="selectedDepartment.name">
     </div>
-    <button type="button" (click)="update(editDepartment.name)" class="btn btn-warning">Update</button>
+    <button type="button" (click)="update(newDept.value)" class="btn btn-warning">Update</button>
     <button type="button" class="btn btn-secondary ml-2" (click)="cancelEdit()">Cancel</button>
   </form>
 </div>

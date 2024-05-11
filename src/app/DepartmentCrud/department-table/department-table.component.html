@@ -1,0 +1,32 @@
+<!-- All Departments -->
+<section class="container mt-5">
+  <h3 class="text-center mb-5 p-3 bg-secondary text-white rounded w-50 mx-auto">Departments Data</h3>
+
+  <table class="table table-hover table-bordered text-center w-75 mx-auto">
+    <thead>
+      <tr class="bg-dark text-white">
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of allDepartmentsData; let i = index" [attr.track]="item.id">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td class="d-flex justify-content-evenly">
+          <button class="btn btn-outline-info" (click)="show(item)">Show</button>
+          <button class="btn btn-outline-warning" (click)="edit(item)">Edit</button>
+          <button class="btn btn-outline-danger" (click)="delete(item)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<app-show-department *ngIf="openShowComponent" [department]="selectedItem" (close)="closeShowComponent()"></app-show-department>
+
+<app-edit-department *ngIf="openEditComponent" [department]="selectedItem" (cancel)="closeEditComponent()"></app-edit-department>
+
+<app-create-department></app-create-department>

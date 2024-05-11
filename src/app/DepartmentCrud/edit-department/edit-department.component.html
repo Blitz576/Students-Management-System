@@ -1,0 +1,12 @@
+<!-- Edit Department Form -->
+<div class="container mt-5">
+  <h3 class="text-center mb-5 p-3 bg-warning text-white rounded w-50 mx-auto">Edit Department</h3>
+  <form>
+    <div class="form-group">
+      <label for="editDepartmentName">Name</label>
+      <input type="text" class="form-control" id="editDepartmentName" [(ngModel)]="department.name" name="editDepartmentName">
+    </div>
+    <button (click)="update()" class="btn btn-warning">Update</button>
+    <button class="btn btn-secondary ml-2" (click)="cancelEdit()">Cancel</button>
+  </form>
+</div>
